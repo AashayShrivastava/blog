@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #bo {
+            background-color: #b9caca5c;
+        }
+
+
+
+        .hea {
+            position: sticky;
+            z-index: 2;
+            top: 0px;
+        }
+
+        #a {
+            background-color: #7272b9;
+            height: 63px;
+            width: 100%;
+            display: flex;
+
+
+        }
+
+        #j {
+            float: left;
+            height: 58px;
+            width: 220px;
+            margin-top: 2px;
+            margin-left: 5px;
+        }
+
+        #imga {
+            height: 58px;
+            width: 220px;
+            float: left;
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+
+
+        #c {
+            display: flex;
+            list-style: none;
+            float: left;
+            margin-top: 20px;
+            margin-left: 5px;
+            font-size: 17px;
+            flex-wrap: wrap;
+        }
+
+        #g {
+            text-decoration: none;
+            color: white;
+            margin-right: 11px;
+        }
+
+        #h {
+            text-decoration: none;
+            color: white;
+            margin-right: 11px;
+        }
+
+        #i {
+            text-decoration: none;
+            color: white;
+            margin-right: 11px;
+        }
+
+
+        #g:hover {
+            color: black;
+        }
+
+        #h:hover {
+            color: black;
+        }
+
+        #i:hover {
+            color: black;
+        }
+
+        #aas {
+            text-align: center;
+        }
+
+        #rty {
+            margin-top: 7px;
+
+            display: inline-block;
+            text-align: start;
+            width: 47vw;
+        }
+
+        #xyz {
+            margin-top: 5px;
+            border: 2px solid black;
+        }
+
+        #le {
+            margin-top: 10px;
+            text-decoration: underline;
+        }
+
+        #info {
+            margin-top: 10px;
+            border: 2px solid black;
+            display: inline-block;
+            width: 50vw;
+        }
+
+        @media screen and (max-width: 513px) {
+            #a {
+                height: 81px;
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 513px) {
+            #c {
+
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 206px) {
+            #q12 {
+                background-color: #7272b9;
+                width: 100vw;
+                top: -31px;
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 208px) {
+            #a {
+                height: 100px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body id="bo">
+    <header class="hea" id="a">
+        <nav class="na" id="b">
+            <ul class="unli" id="c" >
+                {% if current_user.is_authenticated %}
+                <li class="li1" id="d"><a class="a1" id="g" href="{{url_for('index')}}">Home</a></li>
+                <li class="li1" id="f"><a class="a1" id="i" href="{{url_for('logout')}}">Logout</a></li>
+                <li class="li1" id="f"><a class="a1" id="i" href="{{url_for('updates')}}">Account</a></li>
+                <li class="li1" id="f"><a class="a1" id="i" href="{{url_for('add_post')}}">Add Post</a></li>
+
+
+
+
+
+
+
+
+                {% else %}
+
+
+                <li class="li1" id="d"><a class="a1" id="g" href="{{url_for('index')}}">Home</a></li>
+                <li class="li1" id="d"><a class="a1" id="g" href="{{url_for('register')}}">Register</a></li>
+                <li class="li1" id="e"><a class="a1" id="h" href="{{url_for('login')}}">Login</a></li>
+                <li class="li1" id="f"><a class="a1" id="i" href="{{url_for('updates')}}">Update
+
+                    </a></li>
+                <li class="li1" id="f"><a class="a1" id="i" href="{{url_for('add_post')}}">Add Post</a></li>
+
+
+
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <div id="aas">
+        {% block content %} {% endblock %}
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    #xyz {
+        border-radius: 8px;
+        background-color: white;
+    }
+
+    #k {
+        font-size: 28px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    #m {
+        margin-top: 2px;
+        font-size: 28px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    #csk {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+</style>
+
+
+    
+<style>
+    #info {
+        background-color: white;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    #le {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 28px;
+    }
+
+    #q12 {
+        display: flex;
+        position: fixed;
+        right: 1px;
+        top: 21px;
+        z-index: 2;
+    }
+
+    @media screen and (max-width: 513px) {
+        #q12 {
+            position: fixed;
+            justify-content: center;
+            top: 62px;
+            right: 25%;
+            left: 25%;
+        }
+    }
+
+    @media screen and (max-width: 210px) {
+        #q12 {
+
+            position: fixed;
+            justify-content: center;
+            top: 62px;
+            flex-wrap: wrap;
+            right: 0%;
+            left: 0%;
+        }
+    }
+
+    @media screen and (max-width: 970px) {
+        #rty {
+            width: 80vw;
+        }
+    }
+
+    @media screen and (max-width: 513px) {
+        #rty {
+            width: 90vw;
+        }
+    }
+    @media screen and (max-width: 513px) {
+        #a {
+            height: 102px;
+        }
+    }
+</style>
+
+
+
+<form method="Post" action="" style="display: flex;" id="q12">
+
+
+    {{ form.hidden_tag() }}
+
+
+    {{form.wordsearch()}}<br>
+
+
+    {{form.submit()}}
+
+</form>
+
+
+
+<div id="rty">
+
+
+    {% for post in posts.items %}
+
+    <div id="xyz">
+        <div id="k">
+            {{post.author.username}}
+
+        </div>
+        <hr>
+        <div id="m">
+            <a href="{{url_for('update_post',post_id=post.id)}}" style="text-decoration: none;"
+                style="color: blue;width:47vw">{{post.title}}</a>
+        </div>
+        <div id="csk">
+            {{post.content}}
+        </div>
+
+    </div>
+
+
+    {% endfor %}
+    {% for page_num in posts.iter_pages() %}
+    {% if page_num %}
+    <a href="{{url_for('user_posts',username=username,page=page_num)}}">{{page_num}}</a>
+    {% else %}
+    .....
+    {% endif %}
+    {% endfor %}
+
+
+
+
+    {% endblock %}
+
+</div>
